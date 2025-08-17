@@ -110,7 +110,7 @@ in
       (makeDesktopItem {
         name = binaryName;
         desktopName = "Zen Browser${lib.optionalString (name == "twilight") " Twilight"}";
-        exec = "${binaryName} %u";
+        exec = "${placeholder "out"}/bin/${binaryName} %u";
         icon = binaryName;
         type = "Application";
         mimeTypes = [
@@ -133,15 +133,15 @@ in
         actions = {
           new-windows = {
             name = "Open a New Window";
-            exec = "${binaryName} %u";
+            exec = "${placeholder "out"}/bin/${binaryName} %u";
           };
           new-private-window = {
             name = "Open a New Private Window";
-            exec = "${binaryName} --private-window %u";
+            exec = "${placeholder "out"}/bin/${binaryName} --private-window %u";
           };
           profilemanager = {
             name = "Open the Profile Manager";
-            exec = "${binaryName} --ProfileManager %u";
+            exec = "${placeholder "out"}/bin/${binaryName} --ProfileManager %u";
           };
         };
       })
