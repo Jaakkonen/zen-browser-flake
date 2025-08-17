@@ -42,7 +42,10 @@ in {
           # Seems like zen uses relative (to the original binary) path to the policies.json file
           # and ignores the overrides by pkgs.wrapFirefox
           policies = config.programs.zen-browser.policies;
-        }) {}).override
+        }) {
+          # Disable desktop item generation to use the custom ones from the unwrapped package
+          desktopName = null;
+        }).override
         {
           nativeMessagingHosts = config.programs.zen-browser.nativeMessagingHosts;
         };
